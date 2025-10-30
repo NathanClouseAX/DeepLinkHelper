@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AAXURLHelper/bin
+/AAXURLHelper/BuildProjectResult.xml
+/.vs/DeepLinkHelper/v17
