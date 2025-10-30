@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>CustCustomerV3Entity_AAXURLHelper_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(CustCustomerV3Entity))]
+final class CustCustomerV3Entity_AAXURLHelper_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>postLoad</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Replace country region token in full primary address.
+    /// </summary>
+    public void postLoad()
+    {
+
+        this.DeepLinkURL =  AAXURLHelper::generateDeepLink( 'CustTable',
+                                        MenuItemType::Display,
+                                        formDataSourceStr(CustTable, CustTable),
+                                        fieldStr(CustTable,AccountNum),
+                                        this.CustomerAccount);
+       
+
+        next postLoad();
+
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

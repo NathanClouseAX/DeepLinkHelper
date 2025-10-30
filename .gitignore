@@ -3,5 +3,7 @@
 ################################################################################
 
 /AAXURLHelper/bin
-/AAXURLHelper/BuildProjectResult.xml
+/AAXURLHelper/*.xml
+/AAXURLHelper/*.log
 /.vs/DeepLinkHelper/v17
+/AAXURLHelper/Projects/AAXURLHelper/.vs/AAXURLHelper

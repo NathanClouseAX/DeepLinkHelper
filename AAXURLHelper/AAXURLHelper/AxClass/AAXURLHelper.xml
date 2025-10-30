@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>AAXURLHelper</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using Microsoft.Dynamics.AX.Framework.Utilities;
+
+internal final class AAXURLHelper
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>generateDeepLink</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Generates a deep link (URL) for a specified menu item
+    /// </summary>
+    /// <param name = "_menuItemName">The name of the menu item to generate the link for.</param>
+    /// <param name = "_menuItemtype">The type of the menu item (e.g., Display, Output, or Action).</param>
+    /// <param name = "_dataSource">The name of the data source to be used in the deep link.</param>
+    /// <param name = "_field">The name of the field to be used in filtering or highlighting in the deep link.</param>
+    /// <param name = "_value">The value for the specified field, used for filtering in the deep link.</param>
+    /// <returns>A <see cref="URL"/> object containing the generated deep link.</returns>
+    public static URL generateDeepLink(MenuItemName     _menuItemName   ,
+                                        MenuItemType    _menuItemtype   ,
+                                        DataSourceName  _dataSource     = '',
+                                        FieldName       _field          = '',
+                                        str             _value          = '' )
+    {
+
+        UrlHelper.UrlGenerator generator = new UrlHelper.UrlGenerator();
+
+        var environment = Microsoft.Dynamics.ApplicationPlatform.Environment.EnvironmentFactory::GetApplicationEnvironment();
+        str url = environment.Infrastructure.HostUrl;
+
+        if(url == '')
+        {
+            url = URLUtility::getUrl();
+        }
+
+        System.Uri currentHost = new System.Uri(url);
+  
+        generator.HostUrl = currentHost.GetLeftPart(System.UriPartial::Authority);
+
+        generator.Company = curExt();
+        generator.MenuItemName = _menuItemName;
+        generator.MenuItemType = _menuItemtype;
+        generator.Partition = getCurrentPartition();
+        generator.EncryptRequestQuery = true;
+        generator.PageType = FormViewOption::Details;
+
+
+        if(_dataSource != '')
+        {
+            UrlHelper.RequestQueryParameterCollection requestQueryParameterCollection;
+
+            requestQueryParameterCollection = generator.RequestQueryParameterCollection;
+            requestQueryParameterCollection.UpdateOrAddEntry(_dataSource, _field, _value);
+
+        }
+        System.Uri fullURI = generator.GenerateFullUrl();
+        return fullURI.AbsoluteUri;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
