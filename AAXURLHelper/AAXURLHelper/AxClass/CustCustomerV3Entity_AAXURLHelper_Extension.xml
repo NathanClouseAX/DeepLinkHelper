@@ -3,6 +3,8 @@
 	<Name>CustCustomerV3Entity_AAXURLHelper_Extension</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
+using Microsoft.Dynamics.AX.Metadata.MetaModel;
+
 [ExtensionOf(tableStr(CustCustomerV3Entity))]
 final class CustCustomerV3Entity_AAXURLHelper_Extension
 {
@@ -17,14 +19,19 @@ final class CustCustomerV3Entity_AAXURLHelper_Extension
     /// </summary>
     public void postLoad()
     {
+        AxDataEntityView AxDataEntityView;
 
-        this.DeepLinkURL =  AAXURLHelper::generateDeepLink( 'CustTable',
-                                        MenuItemType::Display,
-                                        formDataSourceStr(CustTable, CustTable),
-                                        fieldStr(CustTable,AccountNum),
-                                        this.CustomerAccount);
-       
+        AxDataEntityView = Microsoft.Dynamics.Ax.Xpp.MetadataSupport::GetDataEntityView(tableId2Name(this.TableId));
 
+        if(AxDataEntityView)
+        {
+            this.DeepLinkURL =  AAXURLHelper::generateDeepLink( AxDataEntityView.FormRef,
+                                                            MenuItemType::Display,
+                                                            formDataSourceStr(CustTable, CustTable),
+                                                            fieldStr(CustTable,AccountNum),
+                                                            this.CustomerAccount);
+        }
+        
         next postLoad();
 
     }

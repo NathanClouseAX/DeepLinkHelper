@@ -5,38 +5,41 @@
 	<IsInternal>true</IsInternal>
 	<Methods>
 		<Method>
+			<Name>getGenerator</Name>
+			<IsStatic>true</IsStatic>
+			<ReturnType>
+				<Type>ClrType</Type>
+				<TypeName>Microsoft.Dynamics.AX.Framework.Utilities.UrlHelper.UrlGenerator</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
 			<Name>generateDeepLink</Name>
 			<IsStatic>true</IsStatic>
 			<Visibility>Public</Visibility>
 			<Parameters>
 				<AxMethodParameter>
-					<Tags></Tags>
 					<Type>ExtendedDataType</Type>
 					<TypeName>MenuItemName</TypeName>
 					<Name>_menuItemName</Name>
 				</AxMethodParameter>
 				<AxMethodParameter>
-					<Tags></Tags>
 					<Type>Enum</Type>
 					<TypeName>MenuItemType</TypeName>
 					<Name>_menuItemtype</Name>
 				</AxMethodParameter>
 				<AxMethodParameter>
-					<Tags></Tags>
 					<Type>ExtendedDataType</Type>
 					<TypeName>DataSourceName</TypeName>
 					<DefaultValue>''</DefaultValue>
 					<Name>_dataSource</Name>
 				</AxMethodParameter>
 				<AxMethodParameter>
-					<Tags></Tags>
 					<Type>ExtendedDataType</Type>
 					<TypeName>FieldName</TypeName>
 					<DefaultValue>''</DefaultValue>
 					<Name>_field</Name>
 				</AxMethodParameter>
 				<AxMethodParameter>
-					<Tags></Tags>
 					<Type>String</Type>
 					<TypeName></TypeName>
 					<DefaultValue>''</DefaultValue>
@@ -44,9 +47,66 @@
 				</AxMethodParameter>
 			</Parameters>
 			<ReturnType>
-				<Tags></Tags>
 				<Type>ExtendedDataType</Type>
 				<TypeName>URL</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>generateFormLink</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Type>ExtendedDataType</Type>
+					<TypeName>MenuItemName</TypeName>
+					<Name>_menuItemName</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Type>Enum</Type>
+					<TypeName>MenuItemType</TypeName>
+					<Name>_menuItemtype</Name>
+				</AxMethodParameter>
+				<AxMethodParameter>
+					<Type>Class</Type>
+					<TypeName>Query</TypeName>
+					<Name>_query</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Type>ExtendedDataType</Type>
+				<TypeName>URL</TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>getQueryRangeCount</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Type>Class</Type>
+					<TypeName>Query</TypeName>
+					<Name>_query</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Type>Int32</Type>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>getRequestQueryParameterCollection</Name>
+			<IsStatic>true</IsStatic>
+			<Visibility>Public</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Type>Class</Type>
+					<TypeName>Query</TypeName>
+					<Name>_query</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Type>ClrType</Type>
+				<TypeName>Microsoft.Dynamics.AX.Framework.Utilities.UrlHelper.RequestQueryParameterCollection</TypeName>
 			</ReturnType>
 		</Method>
 	</Methods>

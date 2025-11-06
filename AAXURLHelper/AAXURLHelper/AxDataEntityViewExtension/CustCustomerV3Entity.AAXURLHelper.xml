@@ -12,6 +12,12 @@
 			<IsComputedField>No</IsComputedField>
 			<StringSize>-1</StringSize>
 		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewUnmappedFieldString">
+			<Name>FormLinkURL</Name>
+			<IsComputedField>No</IsComputedField>
+			<StringSize>-1</StringSize>
+		</AxDataEntityViewField>
 	</Fields>
 	<Mappings />
 	<PropertyModifications />

@@ -7,9 +7,36 @@ using Microsoft.Dynamics.AX.Framework.Utilities;
 
 internal final class AAXURLHelper
 {
+
 }
 ]]></Declaration>
 		<Methods>
+			<Method>
+				<Name>getGenerator</Name>
+				<Source><![CDATA[
+    private static UrlHelper.UrlGenerator getGenerator()
+    {
+        UrlHelper.UrlGenerator generator = new UrlHelper.UrlGenerator();
+
+        // different environment types provide different values
+        var environment = Microsoft.Dynamics.ApplicationPlatform.Environment.EnvironmentFactory::GetApplicationEnvironment();
+        str url = environment.Infrastructure.HostUrl;
+        if(url == '')
+        {
+            url = URLUtility::getUrl();
+        }
+        System.Uri currentHost = new System.Uri(url);
+  
+        generator.HostUrl = currentHost.GetLeftPart(System.UriPartial::Authority);
+        generator.Company = curExt();
+        generator.Partition = getCurrentPartition();
+        generator.EncryptRequestQuery = true;
+
+        return generator;
+    }
+
+]]></Source>
+			</Method>
 			<Method>
 				<Name>generateDeepLink</Name>
 				<Source><![CDATA[
@@ -28,28 +55,11 @@ internal final class AAXURLHelper
                                         FieldName       _field          = '',
                                         str             _value          = '' )
     {
+        UrlHelper.UrlGenerator generator = AAXURLHelper::getGenerator();
 
-        UrlHelper.UrlGenerator generator = new UrlHelper.UrlGenerator();
-
-        var environment = Microsoft.Dynamics.ApplicationPlatform.Environment.EnvironmentFactory::GetApplicationEnvironment();
-        str url = environment.Infrastructure.HostUrl;
-
-        if(url == '')
-        {
-            url = URLUtility::getUrl();
-        }
-
-        System.Uri currentHost = new System.Uri(url);
-  
-        generator.HostUrl = currentHost.GetLeftPart(System.UriPartial::Authority);
-
-        generator.Company = curExt();
         generator.MenuItemName = _menuItemName;
         generator.MenuItemType = _menuItemtype;
-        generator.Partition = getCurrentPartition();
-        generator.EncryptRequestQuery = true;
         generator.PageType = FormViewOption::Details;
-
 
         if(_dataSource != '')
         {
@@ -61,6 +71,80 @@ internal final class AAXURLHelper
         }
         System.Uri fullURI = generator.GenerateFullUrl();
         return fullURI.AbsoluteUri;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>generateFormLink</Name>
+				<Source><![CDATA[
+    public static URL generateFormLink(MenuItemName     _menuItemName   ,
+                                    MenuItemType    _menuItemtype   ,
+                                    Query _query)
+    {
+        UrlHelper.UrlGenerator generator = AAXURLHelper::getGenerator();
+
+        generator.MenuItemName = _menuItemName;
+        generator.MenuItemType = _menuItemtype;
+        generator.PageType = FormViewOption::Auto;
+
+        if(AAXURLHelper::getQueryRangeCount(_query) > 0)
+        {
+            UrlHelper.RequestQueryParameterCollection requestQueryParameterCollection = AAXURLHelper::getRequestQueryParameterCollection(_query);
+
+        }
+        System.Uri fullURI = generator.GenerateFullUrl();
+        return fullURI.AbsoluteUri;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getQueryRangeCount</Name>
+				<Source><![CDATA[
+    public static int getQueryRangeCount(Query _query)
+    {
+        int ret = 0;
+        QueryBuildDataSource     qbds;
+        QueryBuildRange          qbr;
+        int                      i, j;
+
+        for (i = 1; i <= _query.dataSourceCount(); i++)
+        {
+            qbds = _query.dataSourceNo(i);
+            ret += qbds.rangeCount();
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getRequestQueryParameterCollection</Name>
+				<Source><![CDATA[
+    public static UrlHelper.RequestQueryParameterCollection getRequestQueryParameterCollection(Query _query)
+    {
+        UrlHelper.RequestQueryParameterCollection requestQueryParameterCollection = new UrlHelper.RequestQueryParameterCollection();
+
+        QueryBuildDataSource     qbds;
+        QueryBuildRange          qbr;
+        int                      i, j;
+
+        for (i = 1; i <= _query.dataSourceCount(); i++)
+        {
+            qbds = _query.dataSourceNo(i);
+
+            for (j = 1; j <= qbds.rangeCount(); j++)
+            {
+                qbr = qbds.range(j);
+
+                requestQueryParameterCollection.UpdateOrAddEntry(tableId2Name(qbr.table()), qbr.fieldName(), qbr.value());
+
+            }
+        }
+
+        return requestQueryParameterCollection;
     }
 
 ]]></Source>
