@@ -37,6 +37,16 @@
       <Name>AAXURLHelper</Name>
       <Link>Classes\AAXURLHelper</Link>
     </Content>
+    <Content Include="AxClass\BatchJobBusinessEventContract_AAXURLHelper_Extension">
+      <SubType>Content</SubType>
+      <Name>BatchJobBusinessEventContract_AAXURLHelper_Extension</Name>
+      <Link>Classes\BatchJobBusinessEventContract_AAXURLHelper_Extension</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsBase_AAXURLHelper_Extension">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsBase_AAXURLHelper_Extension</Name>
+      <Link>Classes\BusinessEventsBase_AAXURLHelper_Extension</Link>
+    </Content>
     <Content Include="AxClass\CustCustomerV3Entity_AAXURLHelper_Extension">
       <SubType>Content</SubType>
       <Name>CustCustomerV3Entity_AAXURLHelper_Extension</Name>
@@ -47,10 +57,16 @@
       <Name>CustCustomerV3Entity.AAXURLHelper</Name>
       <Link>Data Entity Extensions\CustCustomerV3Entity.AAXURLHelper</Link>
     </Content>
+    <Content Include="AxEdt\AAXDeepLinkURL">
+      <SubType>Content</SubType>
+      <Name>AAXDeepLinkURL</Name>
+      <Link>EDT Strings\AAXDeepLinkURL</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Data Entity Extensions\" />
+    <Folder Include="EDT Strings\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
