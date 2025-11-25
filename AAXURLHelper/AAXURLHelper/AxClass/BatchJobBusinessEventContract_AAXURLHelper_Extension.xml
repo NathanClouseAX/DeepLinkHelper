@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BatchJobBusinessEventContract_AAXURLHelper_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classStr(BatchJobBusinessEventContract))]
+final class BatchJobBusinessEventContract_AAXURLHelper_Extension
+{
+    private AAXDeepLinkURL DeepLinkURL;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    protected void initialize(BatchJob _batchJob)
+    {
+
+        this.DeepLinkURL =  AAXURLHelper::generateDeepLink( 'BatchJob',
+                                        MenuItemType::Display,
+                                        formDataSourceStr(BatchJob, BatchJob),
+                                        fieldStr(BatchJob,RecId),
+                                        _batchJob.RecId);
+
+        next initialize(_batchJob);
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmDeepLinkURL</Name>
+				<Source><![CDATA[
+    protected AAXDeepLinkURL parmDeepLinkURL(AAXDeepLinkURL _DeepLinkURL = DeepLinkURL)
+    {
+        DeepLinkURL = _DeepLinkURL;
+        return DeepLinkURL;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

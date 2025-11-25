@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsBase_AAXURLHelper_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(classStr(BusinessEventsBase))]
+final class BusinessEventsBase_AAXURLHelper_Extension
+{
+    private AAXDeepLinkURL deepLinkURL;
+    private FormName deepLinkFormName;
+    private MenuItemType deepLinkMenuItemType;
+    private str deepLinkFormDataSourceStr;
+    private str deepLinkFieldStr;
+    private anytype deepLinkFieldvalue;
+
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDeepLinkURL</Name>
+				<Source><![CDATA[
+    protected AAXDeepLinkURL parmDeepLinkURL(AAXDeepLinkURL _DeepLinkURL = DeepLinkURL)
+    {
+        DeepLinkURL = _DeepLinkURL;
+        return DeepLinkURL;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmdeepLinkFormName</Name>
+				<Source><![CDATA[
+    protected FormName parmdeepLinkFormName(AAXDeepLinkURL _deepLinkFormName = deepLinkFormName)
+    {
+        deepLinkFormName = _deepLinkFormName;
+        return deepLinkFormName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmdeepLinkMenuItemType</Name>
+				<Source><![CDATA[
+    protected MenuItemType parmdeepLinkMenuItemType(MenuItemType _deepLinkMenuItemType = deepLinkMenuItemType)
+    {
+        deepLinkMenuItemType = _deepLinkMenuItemType;
+        return deepLinkMenuItemType;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmdeepLinkFormDataSourceStr</Name>
+				<Source><![CDATA[
+    protected str parmdeepLinkFormDataSourceStr(str _deepLinkFormDataSourceStr = deepLinkFormDataSourceStr)
+    {
+        deepLinkFormDataSourceStr = _deepLinkFormDataSourceStr;
+        return deepLinkFormDataSourceStr;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmdeepLinkFieldStr</Name>
+				<Source><![CDATA[
+    protected str parmdeepLinkFieldStr(str _deepLinkFieldStr = deepLinkFieldStr)
+    {
+        deepLinkFieldStr = _deepLinkFieldStr;
+        return deepLinkFieldStr;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmdeepLinkFieldvalue</Name>
+				<Source><![CDATA[
+    protected anytype parmdeepLinkFieldvalue(anytype _deepLinkFieldvalue = deepLinkFieldvalue)
+    {
+        deepLinkFieldvalue = _deepLinkFieldvalue;
+        return deepLinkFieldvalue;
+    }
+
+    //public final void send()
+    //{
+    //    next send();
+    //    //this.DeepLinkURL =  AAXURLHelper::generateDeepLink( 'BatchJob',
+    //    //                                MenuItemType::Display,
+    //    //                                formDataSourceStr(BatchJob, BatchJob),
+    //    //                                fieldStr(BatchJOb,RecId),
+    //    //                                _batchJob.RecId);
+
+    //}
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

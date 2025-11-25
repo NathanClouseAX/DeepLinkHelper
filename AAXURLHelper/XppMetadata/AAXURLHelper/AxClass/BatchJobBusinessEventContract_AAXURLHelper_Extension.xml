@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<z:anyType xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxCompilerMetadata" xmlns:z="http://schemas.microsoft.com/2003/10/Serialization/">
+	<IsFinal>true</IsFinal>
+	<IsPublic>true</IsPublic>
+	<Attributes>
+		<AxAttribute>
+			<Name>ExtensionOf</Name>
+			<Parameters>
+				<AxAttributeParameter>
+					<Type>Intrinsic</Type>
+					<TypeValue>classStr</TypeValue>
+					<AdditionalData>
+						<AxAttributeParameter>
+							<TypeValue>BatchJobBusinessEventContract</TypeValue>
+							<AdditionalData />
+						</AxAttributeParameter>
+						<AxAttributeParameter>
+							<AdditionalData />
+						</AxAttributeParameter>
+						<AxAttributeParameter>
+							<AdditionalData />
+						</AxAttributeParameter>
+					</AdditionalData>
+				</AxAttributeParameter>
+			</Parameters>
+		</AxAttribute>
+	</Attributes>
+	<Members>
+		<AxClassMemberVariable>
+			<Tags></Tags>
+			<Type>ExtendedDataType</Type>
+			<TypeName>AAXDeepLinkURL</TypeName>
+			<Name>DeepLinkURL</Name>
+			<Attributes />
+			<Visibility>Private</Visibility>
+		</AxClassMemberVariable>
+	</Members>
+	<Methods>
+		<Method>
+			<Name>initialize</Name>
+			<Visibility>Protected</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>Record</Type>
+					<TypeName>BatchJob</TypeName>
+					<Name>_batchJob</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<TypeName></TypeName>
+			</ReturnType>
+		</Method>
+		<Method>
+			<Name>parmDeepLinkURL</Name>
+			<Visibility>Protected</Visibility>
+			<Parameters>
+				<AxMethodParameter>
+					<Tags></Tags>
+					<Type>ExtendedDataType</Type>
+					<TypeName>AAXDeepLinkURL</TypeName>
+					<DefaultValue>DeepLinkURL</DefaultValue>
+					<Name>_DeepLinkURL</Name>
+				</AxMethodParameter>
+			</Parameters>
+			<ReturnType>
+				<Tags></Tags>
+				<Type>ExtendedDataType</Type>
+				<TypeName>AAXDeepLinkURL</TypeName>
+			</ReturnType>
+		</Method>
+	</Methods>
+</z:anyType>
